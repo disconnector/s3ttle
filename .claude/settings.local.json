@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.railway.com)",
+      "Bash(brew install:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(lsof:*)",
+      "Bash(xargs:*)",
+      "Bash(node -e \"require\\(''dotenv''\\).config\\(\\); console.log\\(''Key starts with:'', process.env.ANTHROPIC_API_KEY?.substring\\(0, 15\\)\\)\")",
+      "Bash(npx tsx -e \"import path from ''path''; console.log\\(''cwd:'', process.cwd\\(\\)\\); console.log\\(''dirname:'', __dirname\\); const dotenv = require\\(''dotenv''\\); const r = dotenv.config\\({ path: path.resolve\\(__dirname, ''..'', ''.env''\\) }\\); console.log\\(''dotenv error:'', r.error\\); console.log\\(''key starts:'', process.env.ANTHROPIC_API_KEY?.substring\\(0,15\\)\\);\")",
+      "Bash(npx tsx:*)",
+      "Bash(node -e \"require\\(''dotenv''\\).config\\({ path: ''.env'' }\\); console.log\\(''loaded:'', process.env.ANTHROPIC_API_KEY ? ''yes'' : ''no'', ''starts:'', \\(process.env.ANTHROPIC_API_KEY || ''''\\).substring\\(0,10\\)\\)\")",
+      "Bash(node -e:*)",
+      "Bash(npm create:*)",
+      "Bash(npx shadcn@latest init:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git status:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git pull:*)",
+      "Bash(npx vite:*)",
+      "Bash(plutil:*)",
+      "Bash(ipconfig:*)"
+    ]
+  }
+}

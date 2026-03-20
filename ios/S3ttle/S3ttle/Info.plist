@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Info.plist — App configuration for S3ttle.
+
+  WHAT THIS FILE DOES:
+  Tells iOS about the app's capabilities, permissions, and behavior.
+  Most settings are handled by Xcode's build system, but we need a few
+  custom entries here.
+
+  KEY SETTINGS:
+  - NSAppTransportSecurity: Allows HTTP (not just HTTPS) for local development.
+    In production, remove this — Railway provides HTTPS automatically.
+  - UIViewControllerBasedStatusBarAppearance: Lets us control the status bar style.
+-->
+<plist version="1.0">
+<dict>
+	<!-- Allow HTTP connections for local development -->
+	<!-- REMOVE THIS FOR PRODUCTION — Railway provides HTTPS -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<!-- Allow ALL HTTP during development (not just local networking).
+		     Mac Catalyst needs this because NSAllowsLocalNetworking alone
+		     doesn't cover HTTP requests to IP addresses on macOS.
+		     REMOVE THIS FOR PRODUCTION — use HTTPS only. -->
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+
+	<!-- Status bar configuration -->
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+
+	<!-- Supported interface orientations (iPhone) -->
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+
+	<!-- Supported interface orientations (iPad) -->
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+</dict>
+</plist>
