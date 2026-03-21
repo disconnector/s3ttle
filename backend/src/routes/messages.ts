@@ -243,6 +243,20 @@ router.get('/usage/:sessionId', (req: Request<{ sessionId: string }>, res: Respo
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
+// GET /sessions — Dashboard: all sessions for a device
+// ─────────────────────────────────────────────────────────────────────────────
+
+router.get('/sessions', (req: Request, res: Response) => {
+  const { deviceId } = req.query;
+  if (!deviceId || typeof deviceId !== 'string') {
+    res.status(400).json({ error: 'deviceId query param required' });
+    return;
+  }
+  const sessions = MessageService.getSessionsForDevice(deviceId);
+  res.json({ sessions });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
 // GET /health — Health check for deployment monitoring
 // ─────────────────────────────────────────────────────────────────────────────
 

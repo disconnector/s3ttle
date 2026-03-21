@@ -154,6 +154,26 @@ export async function createSession(
   });
 }
 
+/** Summary of a session shown on the Dashboard */
+export interface SessionSummary {
+  id: string;
+  topic: string;
+  status: 'inviting' | 'refining' | 'discussing' | 'converging' | 'settled' | 'unresolved';
+  myRole: 'partner_a' | 'partner_b';
+  participants: Record<string, ParticipantInfo>;
+  messageCount: number;
+  lastActivityAt: string | null;
+  createdAt: string;
+}
+
+/** Fetch all sessions this device has participated in (for the Dashboard) */
+export async function getSessions(deviceId: string): Promise<SessionSummary[]> {
+  const res = await fetch(`${API_BASE}/sessions?deviceId=${encodeURIComponent(deviceId)}`);
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.sessions ?? [];
+}
+
 export async function getMessages(sessionId: string): Promise<SessionResponse> {
   const res = await fetch(`${API_BASE}/messages/${sessionId}`);
 

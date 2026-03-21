@@ -133,6 +133,14 @@ export function getAllSessions() {
 }
 
 /**
+ * Get sessions a specific device has participated in.
+ * Used by the Dashboard to show "my sessions" for this browser.
+ */
+export function getSessionsForDevice(deviceId: string) {
+  return SessionStore.getSessionsForDevice(deviceId);
+}
+
+/**
  * Transition a session to a new status.
  * The state machine rules are enforced at the route layer.
  */
