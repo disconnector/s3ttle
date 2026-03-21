@@ -127,13 +127,14 @@ export function SetupView({ onStart, profile, onSwitchProfile }: SetupViewProps)
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <Input
+                <textarea
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
-                  placeholder="Should we move to Austin?"
-                  onKeyDown={(e) => e.key === 'Enter' && handleNew()}
+                  placeholder="Should we move to Austin? We've been going back and forth for months and need to make a decision before our lease is up in June..."
                   autoFocus
-                  className="rounded-xl"
+                  rows={5}
+                  maxLength={500}
+                  className="w-full rounded-xl bg-input border border-border px-4 py-3 text-sm leading-relaxed resize-none outline-none focus-visible:ring-1 focus-visible:ring-ring placeholder:text-muted-foreground"
                 />
                 <div className="flex gap-2">
                   <Button variant="ghost" onClick={() => setMode(null)} className="flex-1">

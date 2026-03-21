@@ -30,6 +30,15 @@
  */
 export type MessageAuthor = 'partner_a' | 'partner_b' | 'ai' | 'system_summary';
 
+/** The lifecycle state of a decision session */
+export type SessionStatus =
+  | 'inviting'
+  | 'refining'
+  | 'discussing'
+  | 'converging'
+  | 'settled'
+  | 'unresolved';
+
 /**
  * A single message in a conversation.
  * This mirrors what will eventually be a row in the Supabase 'messages' table.
@@ -49,6 +58,7 @@ export interface Message {
 export interface Session {
   id: string;           // The 6-character session code (e.g. "a1b2c3")
   topic: string;        // What the decision is about (e.g. "Should we move to Austin?")
+  status: SessionStatus;
   participants: Map<string, ParticipantInfo>;  // role → display info
   createdAt: Date;
 }

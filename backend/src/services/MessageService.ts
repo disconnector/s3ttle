@@ -26,7 +26,7 @@
  */
 
 import { v4 as uuidv4 } from 'uuid';
-import { Message, MessageAuthor, ParticipantInfo } from '../types';
+import { Message, MessageAuthor, ParticipantInfo, SessionStatus } from '../types';
 import * as SessionStore from './SessionStore';
 
 /**
@@ -126,9 +126,16 @@ export function registerParticipant(
 }
 
 /**
- * Get all active sessions (for debug/development).
- * Delegates to SessionStore.
+ * Get all sessions with summary counts. Used by the Dashboard.
  */
 export function getAllSessions() {
   return SessionStore.getAllSessions();
+}
+
+/**
+ * Transition a session to a new status.
+ * The state machine rules are enforced at the route layer.
+ */
+export function setSessionStatus(sessionId: string, status: SessionStatus): void {
+  SessionStore.setSessionStatus(sessionId, status);
 }
